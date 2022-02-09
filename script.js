@@ -55,7 +55,7 @@ function addTodo(e)
     function toggleTodoEditForm() {
       if (editableInput.value=== "")
    {
-    alert("You cannot enter empty value");
+    alert("You cannot enter empty value while editing");
   } 
   else
    {
