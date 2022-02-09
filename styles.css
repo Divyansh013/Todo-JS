@@ -123,11 +123,11 @@ body {
 .button--todo {
   color: rgb(10, 10, 10);
   background-color:red ;
-  border: .0px solid rgb(252, 13, 13);
+  border: 5px solid rgb(252, 228, 13);
   transition: 0.3s;
   margin-left:100px;
   grid-template-rows: min-content;
-  font-size: smaller;
+  font-size: 20px;
   margin-bottom: 20px;
 }
 
@@ -171,7 +171,12 @@ body {
     width: 75%;
   }
   .todo-collection__item__title {
-    overflow-x: auto;
+    overflow-x:auto;
+  }
+  .button--todo{
+    font-size: 10px;
+    margin-inline-end: auto;
+    margin-inline-start: auto;
   }
 }
 
@@ -179,4 +184,5 @@ body {
   .wrapper {
     width: 90%;
   }
+  
 }
