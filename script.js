@@ -53,11 +53,18 @@ function addTodo(e)
     todoCollection.appendChild(li);
 
     function toggleTodoEditForm() {
+      if (editableInput.value=== "")
+   {
+    alert("You cannot enter empty value");
+  } 
+  else
+   {
       todoTitle.classList.toggle("hidden");
       editableInput.classList.toggle("hidden");
       editButton.classList.toggle("hidden");
       saveButton.classList.toggle("hidden");
     }
+  }
 
     editButton.addEventListener("click", () => {
       toggleTodoEditForm();
