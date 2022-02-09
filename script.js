@@ -143,6 +143,7 @@ function addTodo(e) {
             deleteButton.addEventListener("click",()=>{
                 setTimeout(()=>{
                     todoCollection.removeChild(li);
+                    
                 },100
                 );
             });
