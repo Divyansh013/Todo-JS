@@ -17,6 +17,7 @@ body {
 .navbar {
   width: 100%;
   height: 10rem;
+  color: aliceblue;
 }
 
 .nav {
@@ -80,11 +81,10 @@ body {
   height: 2rem;
   font-family: "Arial", sans-serif;
   margin: 0;
-  padding: 0 0.5rem;
+  padding:0 0.5rem;
   font-size: 1.1rem;
   color: rgb(13, 191, 245);
   background-color: rgb(46, 46, 46);
-  border: none;
   border: 5px solid rgb(253, 196, 7);
   border-bottom: 5px solid rgb(253, 196, 7);
   border-radius: 10px;
@@ -177,6 +177,10 @@ body {
     font-size: 10px;
     margin-inline-end: auto;
     margin-inline-start: auto;
+  }
+  #input--add{
+    width: 200px;
+    height: 35px;
   }
 }
 
