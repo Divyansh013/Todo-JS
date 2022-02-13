@@ -1,2 +1,192 @@
 // You can start writing your code below
 
+const todoform = document.querySelector(".todo-form");
+const todoInput = document.querySelector("input");
+const todoCollection = document.querySelector(".todo-collection");
+
+todoform.addEventListener("submit", addTodo);
+
+function addTodo(e) {
+    if (todoInput.value==="") {
+        alert("Enter some todo!");
+    }
+    else{
+        const li = document.createElement("li");
+        const todoTitle = document.createElement("span");
+        const editableInput = document.createElement("input");
+        const editButton = document.createElement("button");
+        const saveButton = document.createElement("button");
+        const deleteButton = document.createElement("button");
+
+        li.classList.add("todo-collection__item");
+        todoTitle.classList.add("todo-collection__item__title");
+        todoTitle.innerText = todoInput.value;
+
+        editableInput.classList.add("input");
+        editableInput.classList.add("input--todo");
+        editableInput.classList.add("hidden");
+        editableInput.value = todoInput.value;
+        editableInput.type = "text";
+
+        editButton.classList.add("buttton");
+        editButton.classList.add("button--todo");
+        editButton.classList.add("button--edit");
+        editButton.innerText = "Edit";
+
+        saveButton.classList.add("button");
+        saveButton.classList.add("button--todo");
+        saveButton.classList.add("button--save");
+        saveButton.classList.add("hidden");
+        saveButton.innerText = "Save";
+
+        deleteButton.classList.add("button");
+        deleteButton.classList.add("button--todo");
+        deleteButton.classList.add("button--delete");
+        deleteButton.innerText = "Delete";
+
+        li.appendChild(todoTitle);
+        li.appendChild(editableInput);
+        li.appendChild(editButton);
+        li.appendChild(saveButton);
+        li.appendChild(deleteButton);
+
+        todoCollection.appendChild(li);
+
+        function toggleTodoEditForm() {
+            todoTitle.classList.toggle("hidden");
+            editableInput.classList.toggle("hidden");
+            editButton.classList.toggle("hidden");
+            saveButton.classList.toggle("hidden");
+        }
+
+        editButton.addEventListener("click", () =>{
+            toggleTodoEditForm();
+            editableInput.focus();
+        });
+
+        saveButton.addEventListener("click", () => {
+            todoTitle.innerText = editableInput.value;
+            toggleTodoEditForm();
+        });
+
+        deleteButton.addEventListener("click", () => {
+            var del = confirm("Are you sure you want to delete this todo? ");
+            if (del==true){
+                setTimeout( function() {
+                    todoCollection.removeChild(li);
+                    }, 100);
+            }
+        });
+    
+    }
+
+    todoInput.value = "";
+
+    e.preventDefault();
+
+}
+
+function getTodosFromLS() {
+    let todos;
+
+    if (localStorage.getItem("todos") === null) {
+        todos = [];
+    } else {
+        todos =  JSON.parse(localStorage.getItem("todos"));
+    }
+
+    todos.forEach(todo => {
+
+        const li = document.createElement("li");
+        const todoTitle = document.createElement("span");
+        const editableInput = document.createElement("input");
+        const editButton = document.createElement("button");
+        const saveButton = document.createElement("button");
+        const deleteButton = document.createElement("button");
+
+        li.classList.add("todo-collection__item");
+
+        todoTitle.classList.add("todo-collection__item__title");
+        todoTitle.innerText = todoInput.value;
+
+        editableInput.classList.add("input");
+        editableInput.classList.add("input--todo");
+        editableInput.classList.add("hidden");
+        editableInput.value = todoInput.value;
+        editableInput.type = "text";
+
+        editButton.classList.add("buttton");
+        editButton.classList.add("button--todo");
+        editButton.classList.add("button--edit");
+        editButton.innerText = "Edit";
+
+        saveButton.classList.add("button");
+        saveButton.classList.add("button--todo");
+        saveButton.classList.add("button--save");
+        saveButton.classList.add("hidden");
+        saveButton.innerText = "Save";
+
+        deleteButton.classList.add("button");
+        deleteButton.classList.add("button--todo");
+        deleteButton.classList.add("button--delete");
+        deleteButton.innerText = "Delete";
+
+        li.appendChild(todoTitle);
+        li.appendChild(editableInput);
+        li.appendChild(editButton);
+        li.appendChild(saveButton);
+        li.appendChild(deleteButton);
+
+        todoCollection.appendChild(li);
+
+        function toggleTodoEditForm() {
+            todoTitle.classList.toggle("hidden");
+            editableInput.classList.toggle("hidden");
+            editButton.classList.toggle("hidden");
+            saveButton.classList.toggle("hidden");
+        }
+
+        editButton.addEventListener("click", () =>{
+            toggleTodoEditForm();
+            editableInput.focus();
+        });
+
+        saveButton.addEventListener("click", () => {
+            todoTitle.innerText = editableInput.value;
+            toggleTodoEditForm();
+        });
+
+        deleteButton.addEventListener("click", () => {
+            var del = confirm("Are you sure you want to delete this todo? ");
+            if (del==true){
+                setTimeout( function() {
+                    todoCollection.removeChild(li);
+                }, 100);
+            }
+        });
+    })
+}
+
+
+function saveTodoToLS() {
+    let todos;
+    if (localStorage.getItem("todos")===null) {
+        todos=[];
+    }
+    else{
+        todos=JSON.parse(localStorage.getItem("todos"));
+    }
+
+    todos.push(todoInput.value);
+    localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+function deleteTodoFromLS() {
+    let todos;
+    todos=localStorage.getItem("todos") === null ? [] : JSON.parse(localStorage.getItem("todos"));
+}
+
+function updateTodoInLS() {
+    let todos;
+    todos = localStorage.getItem("todos") === null ? [] : JSON.parse(localStorage.getItem("todos"));
+}
